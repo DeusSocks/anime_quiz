@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Опрос: Кто ты из аниме Наруто?</title>
+</head>
+<body>
+    <h1>Опрос: Кто ты из аниме Наруто?</h1>
+    <form action="/result" method="post">
+        {% for question in questions %}
+            <label>{{ question.question }}</label><br>
+            {% for option in question.options %}
+                <input type="radio" name="answer{{ question.loop }}" value="{{ option }}" required> {{ option }}<br>
+            {% endfor %}
+        {% endfor %}
+        <p>Введите свое имя пользователя: 
+        <input name="username"></p>
+        <button type="submit">Узнать результат</button>
+    </form>
+</body>
+</html>
